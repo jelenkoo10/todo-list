@@ -18,7 +18,8 @@ body {
 }
 
 button,
-input {
+input,
+select {
   font-family: "Inter", sans-serif;
   margin: 0.25rem 0;
   border-radius: 0.5rem;
@@ -26,7 +27,7 @@ input {
 
 input {
   border: 1px solid #be7296;
-  padding: 0.2rem;
+  padding: 0.4rem;
 }
 
 button {
@@ -37,8 +38,14 @@ button {
   font-weight: bold;
 }
 
+button:hover {
+  cursor: pointer;
+  background-color: #ce82a6;
+}
+
 ul {
   width: 400px;
+  min-height: 200px;
   list-style-type: none;
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -61,4 +68,11 @@ h1 {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+#error-text {
+  margin-top: 0;
+  color: #ff3333;
+  font-size: small;
+  font-weight: bold;
 }

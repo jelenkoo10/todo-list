@@ -12,7 +12,17 @@
       <h1>Your Daily Todos</h1>
       <ul id="todolist"></ul>
       <form action="" id="todoform">
+        <select name="day" id="day">
+          <option value="0">Sunday</option>
+          <option value="1">Monday</option>
+          <option value="2">Tuesday</option>
+          <option value="3">Wednesday</option>
+          <option value="4">Thursday</option>
+          <option value="5">Friday</option>
+          <option value="6">Saturday</option>
+        </select>
         <input id="todoinput" type="text" placeholder="Enter a todo" />
+        <p id="error-text"></p>
         <button id="btn" type="submit">Add</button>
       </form>
     </div>
