@@ -1,18 +1,27 @@
 "use strict";
-const btn = document.getElementById("btn");
+const addBtn = document.getElementById("add-btn");
+const deleteBtn = document.getElementById("delete-btn");
 const input = document.getElementById("todoinput");
 const select = document.getElementById("day");
 const errorText = document.getElementById("error-text");
 const form = document.querySelector("form");
 const todolist = document.querySelector("ul");
+const todayPar = document.getElementById("today");
 const currentDay = new Date().getDay();
 select.value = currentDay.toString();
 let selectedDay = currentDay;
+todayPar.textContent = `Today is ${new Date().toLocaleDateString("en-US", {
+    weekday: "long",
+})}. Make your plans now!`;
 select.addEventListener("change", function () {
     selectedDay = parseInt(select.value);
     todolist.innerHTML = "";
     todos = readTodos();
     todos.forEach((todo) => createTodo(todo));
+});
+deleteBtn.addEventListener("click", function (e) {
+    e.preventDefault();
+    deleteTodos();
 });
 const readTodos = () => {
     const todosJSON = localStorage.getItem(selectedDay === null || selectedDay === void 0 ? void 0 : selectedDay.toString());
@@ -22,6 +31,9 @@ const readTodos = () => {
 };
 const saveTodos = () => {
     localStorage.setItem(selectedDay.toString(), JSON.stringify(todos));
+};
+const deleteTodos = () => {
+    localStorage.removeItem(selectedDay.toString());
 };
 const createTodo = (todo) => {
     const newLi = document.createElement("li");

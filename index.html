@@ -10,6 +10,7 @@
   <body>
     <div id="todo-div">
       <h1>Your Daily Todos</h1>
+      <p id="today"></p>
       <ul id="todolist"></ul>
       <form action="" id="todoform">
         <select name="day" id="day">
@@ -23,7 +24,8 @@
         </select>
         <input id="todoinput" type="text" placeholder="Enter a todo" />
         <p id="error-text"></p>
-        <button id="btn" type="submit">Add</button>
+        <button id="add-btn" type="submit">Add</button>
+        <button id="delete-btn">Delete</button>
       </form>
     </div>
     <script src="dist/index.js"></script>

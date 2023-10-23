@@ -76,3 +76,24 @@ h1 {
   font-size: small;
   font-weight: bold;
 }
+
+@media screen and (max-width: 500px) {
+  ul {
+    width: 300px;
+    min-height: 150px;
+    font-size: small;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  ul {
+    width: 200px;
+    min-height: 250px;
+    font-size: x-small;
+    grid-template-columns: 1fr;
+  }
+
+  p {
+    font-size: small;
+  }
+}

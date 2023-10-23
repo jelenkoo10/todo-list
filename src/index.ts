@@ -3,12 +3,8 @@ interface Todo {
   completed: boolean;
 }
 
-interface DayPlan {
-  day: string;
-  list: Todo[];
-}
-
-const btn = document.getElementById("btn")! as HTMLButtonElement;
+const addBtn = document.getElementById("add-btn")! as HTMLButtonElement;
+const deleteBtn = document.getElementById("delete-btn")! as HTMLButtonElement;
 const input = document.getElementById("todoinput")! as HTMLInputElement;
 const select = document.getElementById("day")! as HTMLSelectElement;
 const errorText = document.getElementById(
@@ -16,16 +12,25 @@ const errorText = document.getElementById(
 )! as HTMLParagraphElement;
 const form = document.querySelector("form")!;
 const todolist = document.querySelector("ul")!;
+const todayPar = document.getElementById("today")!;
 
 const currentDay: number = new Date().getDay();
 select.value = currentDay.toString();
 let selectedDay: number = currentDay;
+todayPar.textContent = `Today is ${new Date().toLocaleDateString("en-US", {
+  weekday: "long",
+})}. Make your plans now!`;
 
 select.addEventListener("change", function () {
   selectedDay = parseInt(select.value);
   todolist.innerHTML = "";
   todos = readTodos();
   todos.forEach((todo) => createTodo(todo));
+});
+
+deleteBtn.addEventListener("click", function (e) {
+  e.preventDefault();
+  deleteTodos();
 });
 
 const readTodos = (): Todo[] => {
@@ -36,6 +41,10 @@ const readTodos = (): Todo[] => {
 
 const saveTodos = () => {
   localStorage.setItem(selectedDay.toString(), JSON.stringify(todos));
+};
+
+const deleteTodos = () => {
+  localStorage.removeItem(selectedDay.toString());
 };
 
 const createTodo = (todo: Todo) => {
